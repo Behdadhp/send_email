@@ -4,9 +4,8 @@ with open("test_email.txt") as f:
     lines = f.readline()
 test_email = lines.split(", ")
 
-with open("context.txt") as f:
+with open("context.txt", encoding='utf-8') as f:
     context = f.read()
-
 
 port = 465 
 smtp_server = "smtp.gmail.com"
