@@ -1,8 +1,8 @@
 import smtplib, ssl, time, random
 
-with open("test_email.txt") as f:
+with open("emails.txt") as f:
     lines = f.readline()
-test_email = lines.split(", ")
+emails = lines.split(", ")
 
 with open("context.txt", encoding='utf-8') as f:
     context = f.read()
@@ -16,7 +16,7 @@ context = ssl.create_default_context()
 
 with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
     server.login(sender_email, password)
-    for receiver_email in test_email:
+    for receiver_email in emails:
         ran_num = random.randint(180,300)
         time.sleep(ran_num)
         server.sendmail(sender_email, receiver_email, message)
